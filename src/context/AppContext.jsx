@@ -5,18 +5,24 @@ export const AppContext = React.createContext()
 export const AppProvider = ({ children }) => {
 
   const navItems = [
-    {title: 'React17'},
+    {title: 'React'},
     {title: 'Responsive'},
     {title: 'Tailwind'},
-    {title: 'Context'}
+    {title: 'Context'},
+    {title: 'Nodejs'}
   ]
 
   const [personInfoArray, setPersonInfoArray] = useState(
     [
-      { name: 'Yamaoka' },
-      { name: 'across' },
-      { name: 'the' },
-      { name: 'world' }
+      { imgUrl: '01-Sake.png' },
+      { imgUrl: '02-cake.png' },
+      { imgUrl: '03-sushi.png' },
+      { imgUrl: '04-icecream.png' },
+      { imgUrl: '05-mochi.png' },
+      { imgUrl: '06-hamburger.png' },
+      { imgUrl: '07-macadamianut.png' },
+      { imgUrl: '08-milkshake.png' },
+      { imgUrl: '09-icecream.png' },
     ]
   )
 

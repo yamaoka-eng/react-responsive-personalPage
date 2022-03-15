@@ -2,11 +2,20 @@ import { useEffect, useState, useRef, useContext } from "react"
 import { AppContext } from "../context"
 
 const Card = ({personInfo}) => {
-  const { name } = personInfo
+
+  const { imgUrl } = personInfo
+
+  const [ isPluse, useIsPluse ] = useState(false)
+
+  useEffect(()=>{
+    const randomTime = Math.round(Math.random())*2
+    setTimeout(()=>useIsPluse(true),randomTime)
+  },[])
+
   return (
-    <div className="flex w-80 h-32 transition-all blurry-bg-tsp hover:scale-110
-    justify-center items-center gradient-text-gay-white animate-pulse">
-      <h1 className="text-3xl sm:text-5xl text-white text-gradient py-1">{ name }</h1>
+    <div  onMouseMove={()=>useIsPluse(false)} onMouseLeave={()=>useIsPluse(true)} className={`flex w-52 h-32 transition-all hover:scale-110
+    justify-center items-center ${isPluse ? 'animate-pulse' : ''}`}>
+      <img  className="h-full" src={`../../images/${imgUrl}`} alt="" />
     </div>
   ) 
 }
@@ -18,7 +27,7 @@ const CarouselCard = ({ Component, personInfo, boxCount, speed }) => {
   const [transX, setTransX] = useState(999999)
 
   useEffect(()=>{
-    setTransX(((document.body.offsetWidth/liEl.current.scrollWidth) * 100) + 10)
+    setTransX(((document.body.offsetWidth/liEl.current.scrollWidth) * 100) + 3)
   },[])
 
   useEffect(()=>{
@@ -26,7 +35,7 @@ const CarouselCard = ({ Component, personInfo, boxCount, speed }) => {
     const timeMove = setInterval(() => {
       const windowWith = document.body.offsetWidth
       setTransX(prevtransX => {
-        if (prevtransX <= -(boxCount * 100)) return (((windowWith/boxWith) * 100) + 10)
+        if (prevtransX <= -(boxCount * 100)) return (((windowWith/boxWith) * 100) + 3)
         return  prevtransX - speed
       })
     }, 30)
@@ -42,10 +51,10 @@ const CarouselCards = () => {
 
   const { personInfoArray } = useContext(AppContext)
 
-  const [speed, setSpeed] = useState(0.6)
+  const [speed, setSpeed] = useState(1)
 
   return (
-    <ul className="flex w-full py-8 overflow-hidden"  onMouseMove={()=>setSpeed(0.2)} onMouseLeave={()=>setSpeed(0.6)}>
+    <ul className="flex w-full py-8 overflow-hidden"  onMouseMove={()=>setSpeed(0.2)} onMouseLeave={()=>setSpeed(1)}>
       {personInfoArray.map((item, index)=>(<CarouselCard key={index} Component={Card} speed={speed} boxCount={personInfoArray.length} personInfo={item} />))}
     </ul>
   )
