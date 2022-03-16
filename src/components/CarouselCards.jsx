@@ -7,6 +7,10 @@ const Card = ({personInfo}) => {
 
   const [ isPluse, useIsPluse ] = useState(false)
 
+  const getImage = (imgUrl) => {
+    return new URL(`/src/assets/images/${imgUrl}`, import.meta.url).href;
+  }
+
   useEffect(()=>{
     const randomTime = Math.round(Math.random())*2
     setTimeout(()=>useIsPluse(true),randomTime)
@@ -15,7 +19,7 @@ const Card = ({personInfo}) => {
   return (
     <div  onMouseMove={()=>useIsPluse(false)} onMouseLeave={()=>useIsPluse(true)} className={`flex w-52 h-32 transition-all hover:scale-110
     justify-center items-center ${isPluse ? 'animate-pulse' : ''}`}>
-      <img  className="h-full" src={`../../images/${imgUrl}`} alt="" />
+      <img  className="h-full" src={getImage(imgUrl)} alt="" />
     </div>
   ) 
 }

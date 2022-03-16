@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { HiMenuAlt4 } from "react-icons/hi";
 import { AiOutlineClose } from "react-icons/ai";
-import logo from '../../images/logo.png'
+import logo from '../assets/images/logo.png'
 
 import { AppContext } from "../context"
 
