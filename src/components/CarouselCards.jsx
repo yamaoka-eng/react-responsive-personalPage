@@ -12,7 +12,7 @@ const Card = ({personInfo}) => {
   }
 
   useEffect(()=>{
-    const randomTime = Math.round(Math.random())*2
+    const randomTime = (Math.round(Math.random() * 10)) * 110
     setTimeout(()=>useIsPluse(true),randomTime)
   },[])
 
