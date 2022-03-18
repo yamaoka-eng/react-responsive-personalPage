@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef, useContext } from "react"
 import { AppContext } from "../context"
 
-const Card = ({personInfo}) => {
+const CardContent = ({personInfo}) => {
 
   const { imgUrl } = personInfo
 
@@ -24,7 +24,7 @@ const Card = ({personInfo}) => {
   ) 
 }
 
-const CarouselCard = ({ Component, personInfo, boxCount, speed }) => {
+const CarouselCard = ({ Component, personInfo, boxCount, speed, speedChange }) => {
 
   const liEl = useRef(null)
 
@@ -47,19 +47,30 @@ const CarouselCard = ({ Component, personInfo, boxCount, speed }) => {
   },[speed])
 
   return (
-    <li ref={liEl} className="px-3 md:px-4 flex-none" style={{transform: `translateX(${transX}%)`}}><Component personInfo={personInfo} /></li>
+    <li ref={liEl} className="px-3 md:px-4 flex-none"  onMouseMove={()=>speedChange('low')} onMouseLeave={()=>speedChange('high')} style={{transform: `translateX(${transX}%)`}}><Component personInfo={personInfo} /></li>
   )
 }
 
 const CarouselCards = () => {
 
-  const { personInfoArray } = useContext(AppContext)
+  const { personInfoArray, speedObj } = useContext(AppContext)
 
-  const [speed, setSpeed] = useState(1)
+  const [speed, setSpeed] = useState(speedObj.high)
+
+  const speedChange = (speedType) => {
+    switch (speedType) {
+      case 'high':
+        setSpeed(speedObj.high)
+        return
+      case 'low':
+        setSpeed(speedObj.low)
+        return
+    }
+  }
 
   return (
-    <ul className="flex w-full py-8 overflow-hidden"  onMouseMove={()=>setSpeed(0.2)} onMouseLeave={()=>setSpeed(1)}>
-      {personInfoArray.map((item, index)=>(<CarouselCard key={index} Component={Card} speed={speed} boxCount={personInfoArray.length} personInfo={item} />))}
+    <ul className="flex w-full py-8 overflow-hidden">
+      {personInfoArray.map((item, index)=>(<CarouselCard key={index} Component={CardContent} speed={speed} speedChange={speedChange} boxCount={personInfoArray.length} personInfo={item} />))}
     </ul>
   )
 }

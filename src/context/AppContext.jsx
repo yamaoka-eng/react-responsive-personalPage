@@ -26,11 +26,14 @@ export const AppProvider = ({ children }) => {
     ]
   )
 
+  const speedObj = { high: 1, low: 0.2 }
+
   return (
     <AppContext.Provider
       value={{
         personInfoArray,
-        navItems
+        navItems,
+        speedObj
       }}
     >
       { children }
