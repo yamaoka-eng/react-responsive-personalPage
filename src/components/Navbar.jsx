@@ -16,7 +16,7 @@ const Navbar = () => {
     const [isShowNavMenu, useIsShowNavMenu] = useState(false)
 
     return (
-        <nav className="flex bg-transparent w-full md:justify-center justify-between items-center p-5">
+        <nav className="flex w-full md:justify-center justify-between items-center p-5">
             <div className='md:flex-[0.6] flex-initial justify-center items-center  animate-bounce'>
                 <img src={logo} alt="logo"  className='w-32 cursor-pointer'/>
             </div>
@@ -30,7 +30,7 @@ const Navbar = () => {
                 {!isShowNavMenu && (
                     <HiMenuAlt4 fontSize={30} className="tex-white cursor-pointer" onClick={()=>useIsShowNavMenu(true)}/>
                 )}
-                <ul className={`z-10 fixed -top-0 -right-7 p-3 ${isShowNavMenu ? 'w-[60vw]' : 'w-0'} h-screen shadow-2xl md:hidden list-none 
+                <ul className={`z-20 fixed -top-0 -right-7 p-3 ${isShowNavMenu ? 'w-[60vw]' : 'w-0'} h-screen shadow-2xl md:hidden list-none 
                 flex flex-col justify-start items-end rounded-md text-white blurry-bg-tsp truncate`}>
                     <li className="text-xl w-full my-2">
                         <AiOutlineClose fontSize={20} className="cursor-pointer" onClick={()=>useIsShowNavMenu(false)} />

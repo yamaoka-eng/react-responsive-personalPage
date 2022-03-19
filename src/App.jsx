@@ -1,11 +1,12 @@
 import { useState } from 'react'
-import { Navbar, CarouselCards} from './components'
+import { Navbar, CarouselCards, Welcome} from './components'
 
 export default function App() {
   return (
-    <div className='App'>
+    <div className='App overflow-auto bg-fixed'>
       <Navbar/>
       <CarouselCards/>
+      <Welcome/>
     </div>
   )
 }

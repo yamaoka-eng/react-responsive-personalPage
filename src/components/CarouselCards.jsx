@@ -1,15 +1,12 @@
 import { useEffect, useState, useRef, useContext } from "react"
 import { AppContext } from "../context"
+import { getImage } from "../utils"
 
 const CardContent = ({personInfo}) => {
 
   const { imgUrl } = personInfo
 
   const [ isPluse, useIsPluse ] = useState(false)
-
-  const getImage = (imgUrl) => {
-    return new URL(`/src/assets/images/${imgUrl}`, import.meta.url).href;
-  }
 
   useEffect(()=>{
     const randomTime = (Math.round(Math.random() * 10)) * 110
@@ -18,7 +15,7 @@ const CardContent = ({personInfo}) => {
 
   return (
     <div  onMouseMove={()=>useIsPluse(false)} onMouseLeave={()=>useIsPluse(true)} className={`flex w-52 h-32 transition-all hover:scale-110
-    justify-center items-center ${isPluse ? 'animate-pulse' : ''}`}>
+    justify-center items-center ${isPluse && 'animate-pulse'}`}>
       <img  className="h-full" src={getImage(imgUrl)} alt="" />
     </div>
   ) 
@@ -69,8 +66,14 @@ const CarouselCards = () => {
   }
 
   return (
-    <ul className="flex w-full py-8 overflow-hidden">
+    <ul className="relative flex w-full py-8 overflow-hidden">
+      <li className="absolute z-10 h-32 -left-10">
+        <img className="h-full" src={getImage('棒冰.png')} alt="" />
+      </li>
       {personInfoArray.map((item, index)=>(<CarouselCard key={index} Component={CardContent} speed={speed} speedChange={speedChange} boxCount={personInfoArray.length} personInfo={item} />))}
+      <li className="absolute z-10 h-32 -right-16">
+        <img className="h-full" src={getImage('甜甜圈.png')} alt="" />
+      </li>
     </ul>
   )
 }

@@ -28,12 +28,26 @@ export const AppProvider = ({ children }) => {
 
   const speedObj = { high: 1, low: 0.2 }
 
+  const welcomeInfo = {
+    leftNav: [
+      { id: '01', name: 'Sumple' },
+      { id: '02', name: 'Playful' },
+      { id: '03', name: 'Elegant' },
+      { id: '04', name: 'Brutalist' },
+    ],
+    welcomeText: [
+      "Welcome to Yamaoka's Personality Homepage.",
+      "To read without reflecting is like eating without digesting."
+    ]
+  }
+
   return (
     <AppContext.Provider
       value={{
         personInfoArray,
         navItems,
-        speedObj
+        speedObj,
+        welcomeInfo
       }}
     >
       { children }
