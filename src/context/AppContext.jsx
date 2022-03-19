@@ -37,7 +37,8 @@ export const AppProvider = ({ children }) => {
     ],
     welcomeText: [
       "Welcome to Yamaoka's Personality Homepage.",
-      "To read without reflecting is like eating without digesting."
+      "To read without reflecting is like eating without digesting.",
+      "You can change your life if you want to."
     ]
   }
 

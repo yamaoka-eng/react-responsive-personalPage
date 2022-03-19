@@ -70,12 +70,21 @@ ul {
   transition: all 2s ; 
 }
 
-.transition-1 {
-  transition: all 2s ; 
-}
-
 .cursor-flicker {
   animation:flicker 1s infinite
+}
+
+.btn-gradual {
+  background: linear-gradient(to right, red 0%,rgba(109, 40, 217) 100%);
+}
+
+.color-animated:hover {
+  animation: colorChange 2s;
+}
+
+.btn-animated {
+  background: linear-gradient(to right, rgba(37, 99, 235) 0%,rgba(37, 99, 235) 50%,rgba(196, 181, 253) 50%,rgba(196, 181, 253) 100%) 100%;
+  background-size: 200%;
 }
 
 @keyframes colorChange {
@@ -101,6 +110,7 @@ ul {
     opacity: 0.2
   }
 }
+
 /* ./src/index.css */
 @tailwind base;
 @tailwind components;
