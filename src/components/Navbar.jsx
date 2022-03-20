@@ -5,8 +5,8 @@ import logo from '../assets/images/logo.png'
 
 import { AppContext } from "../context"
 
-const NavbarItem = ({title, classprops}) => (
-    <li className={`mx-4 cursor-pointer hover:scale-125 transition ${classprops}`}>{title}</li>
+const NavbarItem = ({title, classprops, onClick }) => (
+    <li className={`mx-4 cursor-pointer hover:scale-125 transition ${classprops}`} onClick={onClick}>{title}</li>
 )
 
 const Navbar = () => {
@@ -24,7 +24,7 @@ const Navbar = () => {
                 {
                     navItems.map((item, index)=>(<NavbarItem key={item + index} title={item.title}/>))
                 }
-                <li className='gradient-bg-btn py-2 px-7 mx-4 rounded-full cursor-pointer hover:bg-[#2546bd]'>EXPLORE</li>
+                <a className='gradient-bg-btn py-2 px-7 mx-4 rounded-full cursor-pointer hover:bg-[#2546bd]' target="_blank" href="https://github.com/yamaoka-eng/react-responsive-personalPage/tree/master">EXPLORE</a>
             </ul>
             <div className="md:hidden">
                 {!isShowNavMenu && (
@@ -38,7 +38,7 @@ const Navbar = () => {
                     {navItems.map(
                         (item, index) => <NavbarItem key={item + index} title={item.title} classprops="my-2 text-lg px-3" />
                     )}
-                    <NavbarItem title={"EXPLORE"} classprops="my-2 text-lg text-white px-3 gradient-text hover:text-cyan-400"/>
+                    <NavbarItem title="EXPLORE" classprops="my-2 text-lg text-white px-3 gradient-text hover:text-cyan-400" onClick={()=>window.open("https://github.com/yamaoka-eng/react-responsive-personalPage/tree/master")}/>
                 </ul>
             </div>
         </nav>

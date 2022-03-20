@@ -79,7 +79,7 @@ ul {
 }
 
 .color-animated:hover {
-  animation: colorChange 2s;
+  animation: colorChange 1s;
 }
 
 .btn-animated {
