@@ -92,7 +92,7 @@ ul {
   z-index: -1;
   position: absolute;
   top: 0;
-  left: -1px;
+  left: 0;
   content:"";
   height: 100%;
   width: 0;
