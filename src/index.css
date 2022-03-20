@@ -83,8 +83,35 @@ ul {
 }
 
 .btn-animated {
-  background: linear-gradient(to right, rgba(37, 99, 235) 0%,rgba(37, 99, 235) 50%,rgba(196, 181, 253) 50%,rgba(196, 181, 253) 100%) 100%;
-  background-size: 200%;
+  z-index: 1;
+  position: relative;
+  background-image: linear-gradient(to right, rgba(196, 181, 253) 0%,rgba(196, 181, 253) 100%);
+}
+
+.btn-animated::before {
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: -1px;
+  content:"";
+  height: 100%;
+  width: 0;
+  transition: all 0.5s;
+  background-color: rgba(251, 191, 36, 0.6);
+  border-radius: 0.375rem;
+}
+
+.btn-animated:hover::before {
+  z-index: 10;
+  background-color: #FF7242;
+  animation: flex-before 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940);
+  border-radius: 0.375rem;
+  height: 100%;
+  width: 100%;
+}
+
+.slide-in-bottom {
+  animation: slide-in-bottom 1s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
 }
 
 @keyframes colorChange {
@@ -111,6 +138,24 @@ ul {
   }
 }
 
+@keyframes slide-in-bottom {
+  0% {
+    transform: translateY(1000px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes flex-before {
+   0% { width: 0; } 35% { width: 100%; } 75% { width: 85%; } 100% { width: 100%; }
+}
+
+@keyframes flex-before2 {
+  from {width: 100%;} to {width: 0%}
+}
 /* ./src/index.css */
 @tailwind base;
 @tailwind components;

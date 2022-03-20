@@ -4,7 +4,7 @@ import { getImage } from "../utils"
 
 const Welcome = () => {
   return (
-    <div className="w-full flex justify-center items-center p-4 pt-6">
+    <div className="w-full flex justify-center items-center p-4 pt-6 slide-in-bottom">
       <div className="flex md:p-16 md:mx-4 py-6 px-4 justify-between md:flex-row flex-col blurry-bg-tsp ">
         <LeftNav/>
         <Card/>
@@ -116,7 +116,7 @@ const Card = () => {
         <div className="flex space-x-3 mb-4 text-sm font-medium">
           <div className="flex-auto flex space-x-3">
             <button className="color-animated btn-gradual w-1/2 flex items-center justify-center rounded-md text-white" >Decorative buttons</button>
-            <button className="transition duration-500 btn-animated w-1/2 flex items-center justify-center rounded-md border text-purple-700">Decorative buttons</button>
+            <button className="transition duration-500 btn-animated w-1/2 flex items-center justify-center rounded-md border text-white"><span className="z-10">Decorative buttons</span></button>
           </div>
           <button className="flex-none flex items-center justify-center w-9 h-9 rounded-md text-gray-400 border border-gray-300" type="button" aria-label="like">
             <svg className="hover:text-red-500" width="20" height="20" fill="currentColor">
